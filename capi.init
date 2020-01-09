@@ -1,28 +1,24 @@
 #! /bin/bash
 #
 # chkconfig: 2345 9 91
-# description: start and stop capi services for passive ISDN cards
+# description: start and stop capi services for passiv ISDN cards
 #
 
 PATH=/bin:/sbin:/usr/bin:/usr/sbin
 
 # Source function library.
-if [ -f /etc/init.d/functions ]; then
-    . /etc/init.d/functions
-elif [ -f /etc/rc.d/init.d/functions ] ; then
-    . /etc/rc.d/init.d/functions
-else
-    exit 0
-fi
+. /etc/rc.d/init.d/functions
 
-[ -f /sbin/capiinit ] || exit 0
-[ -f /etc/capi.conf ] || exit 0
+# Check that we're a privileged user
+[ `id -u` = 0 ] || exit 4
+
+[ -x /sbin/capiinit ] || exit 5
+[ -f /etc/capi.conf ] || exit 6
+
 RETVAL=0
 
 function start()
 {
-    # don't start again if it's already started
-    [ ! -f /var/lock/subsys/capi ] || exit 0
     action $"Starting capi4linux:" capiinit start
     RETVAL=$?
     if [ $RETVAL -eq 0 ] ; then
@@ -32,12 +28,10 @@ function start()
 
 function stop()
 {
-    if [ -f /var/lock/subsys/capi ] ; then
-       action $"Stopping capi4linux:" capiinit stop
-       RETVAL=$?
-       if [ $RETVAL -eq 0 ] ; then
-          rm -f /var/lock/subsys/capi
-       fi
+    action $"Stopping capi4linux:" capiinit stop
+    RETVAL=$?
+    if [ $RETVAL -eq 0 ] ; then
+       rm -f /var/lock/subsys/capi
     fi
 }
 
@@ -54,9 +48,16 @@ function condrestart()
     fi
 }
 
+
 function status()
 {
-    capiinfo
+    if [ -f /var/lock/subsys/capi ] ; then
+        echo "capi is running"
+        RETVAL=0
+    else
+        echo "capi is stopped"
+        RETVAL=3
+    fi
 }
 
 case "$1" in 
@@ -77,7 +78,7 @@ case "$1" in
        ;;
     *)
        echo $"Usage: $0 {start|stop|restart|status|condrestart}"
-       exit 1
+       RETVAL=3
 esac
 
-exit 0
+exit $RETVAL

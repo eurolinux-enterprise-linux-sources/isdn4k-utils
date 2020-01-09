@@ -6,7 +6,7 @@
 Summary: Utilities for configuring an ISDN subsystem
 Name: isdn4k-utils
 Version: 3.2
-Release: 73%{?dist}
+Release: 75%{?dist}
 License: GPLv2+ and GPL+ and MIT and BSD and zlib
 Group: Applications/System
 
@@ -470,6 +470,14 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Mon Jul 25 2011 Than Ngo <than@redhat.com> 3.2-75
+- Resolves: bz#618549, service isdn status
+- Resolves: bz#618653, service capi status
+
+* Mon Jul 18 2011 Than Ngo <than@redhat.com> - 3.2-74
+- Resolves: bz#618549, service isdn status
+- Resolves: bz#618653, service capi status
+
 * Mon Jun 28 2010 Than Ngo <than@redhat.com> - 3.2-73
 - Resolves: bz#596174, build with -fno-strict-aliasing
 

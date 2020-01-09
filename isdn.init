@@ -6,20 +6,13 @@
 
 PATH=/bin:/sbin:/usr/bin:/usr/sbin
 
-if [ -f /etc/init.d/functions ]; then
-    . /etc/init.d/functions
-elif [ -f /etc/rc.d/init.d/functions ] ; then
-    . /etc/rc.d/init.d/functions
-else
-    exit 0
-fi
+# Check that we're a privileged user
+[ `id -u` = 0 ] || exit 4
 
-test -f /etc/sysconfig/isdncard || exit 0
-. /etc/sysconfig/isdncard
+[ -x /sbin/isdnctrl ] || exit 5
 
-if [ -z "$MODULE" -o -z "$RESOURCES" ]; then
-    exit 0
-fi        
+# source function library
+. /etc/init.d/functions
 
 # disable debug as default
 IBOD=no
@@ -28,8 +21,6 @@ sync_devices=0
 raw_devices=0
 PCMCIA=no
 COMPRESSION=7
-
-prog="/usr/sbin/isdnlog"
 
 # check PCMCIA
 if [ "$RESOURCES" = "NONE" ] ; then
@@ -120,7 +111,9 @@ function load_modules()
     [ "$PCMCIA" = "no" ] || return
 
     modprobe $MODULE $RESOURCES > /dev/null 2>&1
-    if [ $? = 0 ] ; then
+    isdnctrl list all >/dev/null 2>&1
+    RETVAL=$?
+    if [ $RETVAL -eq 0 ] ; then
         action $"Loading ISDN modules" /bin/true
         touch /var/lock/subsys/isdn
     else
@@ -147,7 +140,8 @@ function load_firmware()
     # loading firmware
     if [ -n "$FIRMWARE" ] ; then
         $FIRMWARE >/dev/null 2>&1
-        if [ $? -eq 0 ]; then
+        RETVAL=$?
+        if [ $RETVAL -eq 0 ]; then
             action $"Loading Firmware" /bin/true
         else
             action $"Loading Firmware" /bin/false
@@ -159,6 +153,7 @@ function start_isdnlog()
 {
     # don't start isdnlog, if the ISDN card requires the firmware
     [ -z "$FIRMWARE" ] || return
+    prog="isdnlog"
     if [ "$MODULE" = "hisax" ] ; then
         driverid="HiSax"
     elif [ "$MODULE" = "hisax_fcpcipnp" ] ; then
@@ -175,7 +170,8 @@ function start_isdnlog()
     else
         daemon $prog /dev/isdnctrl0 -x0x3fff -M -w2 -S -D -s -O+/var/log/isdnctrl
     fi
-    if [ $? -eq 0 ] ; then
+    RETVAL=$?
+    if [ $RETVAL -eq 0 ] ; then
         action  $"Starting $prog" /bin/true
         touch /var/lock/subsys/isdnlog
     else
@@ -185,13 +181,12 @@ function start_isdnlog()
 
 function stop_isdnlog()
 {
-    if [ -f /var/lock/subsys/isdnlog ] ; then
-        echo -n $"Shutting down $prog"
-        killproc $prog
-        RETVAL=$?
-        echo
-        [ $RETVAL -eq 0 ] && rm -f /var/lock/subsys/isdnlog
-    fi
+    prog="isdnlog"
+    echo -n $"Shutting down $prog"
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && /bin/rm -f /var/lock/subsys/isdnlog
 }
 
 function makedev()
@@ -205,17 +200,20 @@ function makedev()
 
 function start()
 {
+    test -f /etc/sysconfig/isdncard || exit 6
+    . /etc/sysconfig/isdncard
+
+    if [ -z "$MODULE" -o -z "$RESOURCES" ]; then
+        exit 6
+    fi
+
     # workaround for kernel/udev (ISDN part)
     makedev
 
     # activate ISA PnP
     isapnp activate
 
-    # don't start again if it's already started
-    [ ! -f /var/lock/subsys/isdn ] || exit 0
-
     # load modules
-    remove_modules
     load_modules
  
     # load firmware and setup isdn device driver
@@ -244,6 +242,7 @@ function status()
     interfaces="$(cat /proc/net/dev 2>/dev/null | egrep "(ippp*|isdn*)" | cut -f1 -d:)"
     if [ -z "$interfaces" ]; then
         echo $"$0: Link is down"
+        RETVAL=3
         return
     fi
     for i in $interfaces ;do
@@ -252,6 +251,7 @@ function status()
             echo $"$NAME is attached to $DEVICE"
         fi
     done
+    return 0
 }
 
 function condrestart()
@@ -279,7 +279,7 @@ case "$1" in
        ;;
     *)
        echo $"Usage: $0 {start|stop|restart|status|condrestart}"
-       exit 1
+       RETVAL=3
 esac
 
-exit 0
+exit $RETVAL

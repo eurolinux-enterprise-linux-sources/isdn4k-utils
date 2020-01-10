@@ -6,7 +6,7 @@
 Summary: Utilities for configuring an ISDN subsystem
 Name: isdn4k-utils
 Version: 3.2
-Release: 93%{?dist}
+Release: 95%{?dist}
 License: GPLv2+ and GPL+ and MIT and BSD and zlib
 Group: Applications/System
 Url: http://www.isdn4linux.de/
@@ -24,6 +24,10 @@ Source9: capiinit.8
 
 Source10: 40-isdn.rules
 Source11: isdn.service
+Source12: capifax.1
+Source13: capifaxrcvd.1
+Source14: rcapid.1
+Source15: vboxcnvt.1
 
 Patch0: isdn4k-utils-CVS-2009-10-20-redhat.patch
 Patch1: isdn4k-utils-CVS-2009-10-20-lib64.patch
@@ -259,6 +263,10 @@ mv isdnlog/README isdnlog/README.isdnlog
 
 # install man page for capiinit
 install -m644 %{SOURCE9} %{buildroot}%{_mandir}/man8/
+install -m644 %{SOURCE12} %{buildroot}%{_mandir}/man1/
+install -m644 %{SOURCE13} %{buildroot}%{_mandir}/man1/
+install -m644 %{SOURCE14} %{buildroot}%{_mandir}/man1/
+install -m644 %{SOURCE15} %{buildroot}%{_mandir}/man1/
 
 # install config file for capi
 mkdir -p $RPM_BUILD_ROOT/etc
@@ -396,6 +404,14 @@ echo "# config files" >> %{buildroot}/etc/ppp/ioptions
 
 
 %changelog
+* Mon Jun 01 2015 Than Ngo <than@redhat.com> - 3.2-95
+- Resolves: bz#948944, add missing man pages
+
+* Tue Jul 29 2014 Than Ngo <than@redhat.com> - 3.2-94
+- Resolves: bz#1060370
+  update patch to handle all cases by recursing through fmtmsg
+  instead of vfmtmsg directly which depends on va_list type.
+
 * Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 3.2-93
 - Mass rebuild 2013-12-27
 

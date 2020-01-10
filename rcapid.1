@@ -1,0 +1,23 @@
+.TH rcapid 1 "01 June 2015" "rcapid"
+.SH NAME
+rcapid - remote CAPI server
+.SH SYNOPSIS
+rcapid [-l loglevel]
+.SH DESCRIPTION
+.PP
+rcapid is a server to communicate with CAPI clients.
+It is designed to run from inetd.
+add the following line to /etc/services:
+.PP
+	capi 6000/tcp
+.PP
+Add the following line to /etc/inetd.conf:
+.PP
+	capi stream tcp nowait.9999 /usr/sbin/rcapid rcapid
+.SH OPTIONS
+.TP
+-l loglevel
+the level of verbosity in the logging. This is logged in /tmp/rcapid.log
+.SH AUTHOR
+This manual page was written by Paul Slootman <paul@tdebian.org>,
+Than Ngo <than@redhat.com>

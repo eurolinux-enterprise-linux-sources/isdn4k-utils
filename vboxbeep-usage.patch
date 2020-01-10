@@ -1,0 +1,10 @@
+--- isdn4k-utils-CVS-2010-05-01-patched/vbox/src/vboxbeep.c.than	2016-05-02 17:32:51.125017757 +0200
++++ isdn4k-utils-CVS-2010-05-01-patched/vbox/src/vboxbeep.c	2016-05-02 17:34:29.870282142 +0200
+@@ -284,6 +284,7 @@
+ 	fprintf(stderr, "\n");
+ 	fprintf(stderr, "-s, --sound HOURS      Hours to signal with sound (default: no time)\n");
+ 	fprintf(stderr, "-m, --messagebox DIR   Watch directory DIR for new messages.\n");
++   fprintf(stderr, "-k, --kill             Kill a running vboxbeep. This option can only be used by root.\n");
+ 	fprintf(stderr, "-p, --pause SECONDS    Pause in seconds to sleep between checks (default: 5).\n");
+ 	fprintf(stderr, "-h, --help             Displays this help text.\n");
+ 	fprintf(stderr, "-v, --version          Displays program version.\n");

@@ -1,24 +1,32 @@
-.TH capifaxrcvd 1 "01 June 2015" "capifaxrcvd"
+.TH capifaxrcvd 1 "01 June 2015" "man page"
 .SH NAME
-capifaxrcvd
+capifaxrcvd — a FAX receive daemon for CAPI
 .SH SYNOPSIS
-This executable is part of the package 'isdn4k-utils': CAPI 2.0 library
-and associated tools. Documentation for a specific package may be available at
-/usr/share/doc/isdn4k-utils
+capifaxrcvd [-i stationID] [-h header] [-l listenNumber] [-n notifyCmd] rcvDirectory
 .SH DESCRIPTION
-.PP
-This package contains the CAPI 2.0 library, which is needed for all
-CAPI applications. It also contains programs to show information about
-installed CAPI controllers and for the receiving and sending of FAX
-messages. CAPI 2.0 drivers for Linux are available for a growing number
-of ISDN devices.
+capifaxrcvd is a daemon to receive faxes via CAPI; you need a CAPI capable ISDN card with the appropriate drivers.
+
+The final argument must be the directory in which the received faxes are to be placed. The filenames of the received faxes are of the form:
+f[fn]xxxtttttttt
+[fn] indicates the resolution (fine or normal),
+xxx indicated the number of pages,
+tttttttt is the (hexadecimal) timestamp of the fax (seconds since the Unix epoch, 00:00 on January 1st, 1970 UTC).
+
+The daemon will fork itself into the background.
+
+This stuff is based heavily on AVM's CAPI-adk for linux.
+.SH OPTIONS
+.TP
+-i station_ID
+    the station ID. Typically the company name or similar.
+.TP
+-h headline
+    title of sent document. (?)
+.TP
+-l listenNumber
+    the phone number on which to receive faxes, i.e. the number to listen on.
+.TP
+-n notifyCmd
+    command to execute when a fax has been received. It will be called with one argument, namely the filename of the received fax (without the directory name).
 .SH AUTHOR
-.EX
-\&Carsten Paeth <calle@calle.in-berlin.de>
-\&Kai Germaschewski <kai@tp1.ruhr-uni-bochum.de>
-\&Armin Schindler <mac@melware.de>
-\&Werner Cornelius <Cornelius@isdn-development.de>
-\&Karsten Keil <kkeil@suse.de>
-\&and more.
-.BR
-This manual page was written by Than Ngo <than@redhat.com>
+manpage written from C source by Paul Slootman <paul@debian.org>.

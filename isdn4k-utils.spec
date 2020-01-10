@@ -6,7 +6,7 @@
 Summary: Utilities for configuring an ISDN subsystem
 Name: isdn4k-utils
 Version: 3.2
-Release: 95%{?dist}
+Release: 99%{?dist}
 License: GPLv2+ and GPL+ and MIT and BSD and zlib
 Group: Applications/System
 Url: http://www.isdn4linux.de/
@@ -50,6 +50,14 @@ Patch24: isdn4k-fix-ipppd.patch
 Patch25: isdn4k-utils-capi20-link.patch
 Patch26: isdn4k-utils-CVS-2010-05-01-patched-legal-fixes.patch
 Patch27: isdn4k-utils-CVS-2010-05-01-patched-strict-aliasing.patch
+Patch28: isdn4k-utils-manpage.patch
+Patch29: isdn4k-utils-isdnbill.patch
+Patch30: rmdtovbox.patch
+Patch31: vboxbeep-usage.patch
+Patch32: isdnctrl-usage.patch
+Patch33: mkzonedb-usage.patch
+Patch34: isdnrate-manpage.patch
+Patch35: isdnlog-manpage.patch
 
 Requires: udev >= 039-10.14.EL4
 Requires: hwdata >= 0.146.18.EL-1
@@ -157,6 +165,14 @@ The isdn4k-utils-doc package contains the documentation for isdn4k-utils.
 %patch25 -p1 -b .capi20-link
 %patch26 -p1 -b .legal
 %patch27 -p1 -b .no-strict-aliasing
+%patch28 -p1 -b .manpage
+%patch29 -p1 -b .help
+%patch30 -p1 -b .man
+%patch31 -p1 -b .usage
+%patch32 -p1 -b .usage
+%patch33 -p1 -b .usage
+%patch34 -p1 -b .man
+%patch35 -p1 -b .man
 
 # remove useless files
 find -type d -name "CVS" | xargs rm -rf
@@ -329,8 +345,6 @@ echo "# config files" >> %{buildroot}/etc/ppp/ioptions
 %{_sbindir}/isdnctrl
 %{_sbindir}/pcbitctl
 %{_libexecdir}/isdn
-%{_unitdir}/isdn.service
-%{_unitdir}/capi.service
 %{_bindir}/*
 %{_sbindir}/capiinit
 %{_sbindir}/imon
@@ -347,6 +361,8 @@ echo "# config files" >> %{buildroot}/etc/ppp/ioptions
 %doc COPYING README isdnlog/README.*
 %doc isdnlog/tools/zone/de/01033/zred.dtag.bz2
 %ghost %{_datadir}/isdn/zone-de-dtag.cdb
+%{_unitdir}/isdn.service
+%{_unitdir}/capi.service
 %{_mandir}/man1/*
 %{_mandir}/man4/*
 %{_mandir}/man5/*
@@ -404,6 +420,18 @@ echo "# config files" >> %{buildroot}/etc/ppp/ioptions
 
 
 %changelog
+* Fri May 06 2016 Than Ngo <than@redhat.com> 3.2-99
+- Resolves: bz#1320639, fix permission issue
+
+* Fri May 06 2016 Than Ngo <than@redhat.com> - 3.2-98
+- Resolves: bz#1261947, fix manpages
+
+* Tue May 03 2016 Than Ngo <than@redhat.com> - 3.2-97
+- Resolves: bz#1261947, fix manpages
+
+* Mon Apr 25 2016 Than Ngo <than@redhat.com> - 3.2-96
+- Resolves: bz#1261947, fix manpages
+
 * Mon Jun 01 2015 Than Ngo <than@redhat.com> - 3.2-95
 - Resolves: bz#948944, add missing man pages
 
@@ -562,7 +590,7 @@ echo "# config files" >> %{buildroot}/etc/ppp/ioptions
 - add pppd 2.4.4
 - use isdn-header files from upstream
 
-* Wed Jul 14 2006 Jesse Keating <jkeating@redhat.com> - 3.2-49
+* Fri Jul 14 2006 Jesse Keating <jkeating@redhat.com> - 3.2-49
 - rebuild
 - add missing br automake libtool
 
@@ -798,7 +826,7 @@ echo "# config files" >> %{buildroot}/etc/ppp/ioptions
 - fix bug in isdnlog (bug #60013)
 - fix bug in imon
 
-* Wed Feb 21 2002 Than Ngo <than@redhat.com> 3.1-51
+* Thu Feb 21 2002 Than Ngo <than@redhat.com> 3.1-51
 - fix bad memory allocation (enrico.scholz@informatik.tu-chemnitz.de), bug #60179
 
 * Tue Feb 19 2002 Bernhard Rosenkraenzer <bero@redhat.com> 3.1-50
@@ -937,7 +965,7 @@ echo "# config files" >> %{buildroot}/etc/ppp/ioptions
 - change Makefiles instead of moving things around in the spec file
 - include the manpages of the X11 progs only in the xisdnload rpm
 
-* Tue Feb 03 2000 Ngo Than <than@redhat.de>
+* Thu Feb 03 2000 Ngo Than <than@redhat.de>
 - fix pap and chap problem in isdn.init
 
 * Tue Feb 01 2000 Ngo Than <than@redhat.de>
@@ -960,7 +988,7 @@ echo "# config files" >> %{buildroot}/etc/ppp/ioptions
 * Thu Sep 30 1999 Karsten Hopp <karsten@redhat.de>
 - added isdnconfig script and related files
 
-* Fri Sep 25 1999 Bill Nottingham <notting@redhat.com>
+* Sat Sep 25 1999 Bill Nottingham <notting@redhat.com>
 - bang on init script
 
 * Mon Sep 20 1999 Cristian Gafton <gafton@redhat.com>

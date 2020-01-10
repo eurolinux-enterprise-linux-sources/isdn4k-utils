@@ -1,0 +1,13 @@
+--- isdn4k-utils-CVS-2010-05-01-patched/isdnctrl/isdnctrl.c.than	2016-05-02 17:47:37.658481797 +0200
++++ isdn4k-utils-CVS-2010-05-01-patched/isdnctrl/isdnctrl.c	2016-05-02 17:52:19.621817619 +0200
+@@ -1702,6 +1702,10 @@
+ 		usage();
+ 		exit(-1);
+ 	}
++   if ((argc == 2) && (!strcmp(argv[1], "-h"))) {
++      usage();
++      exit(0);
++   }
+ 	if ((argc == 2) && (!strcmp(argv[1], "-V"))) {
+ 		check_version(1);
+ 		exit(0);

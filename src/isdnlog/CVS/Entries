@@ -1,0 +1,47 @@
+/.Config.in/1.16/Thu Oct 28 01:53:29 2004//
+/.cvsignore/1.3/Sun Feb 12 16:16:36 2006//
+/BUGS/1.3/Tue May  4 19:32:01 1999//
+/COPYING/1.1/Mon Mar  3 04:37:31 1997//
+/CREDITS/1.1/Fri Dec 31 13:57:17 1999//
+/FAQ/1.2/Tue Aug  1 20:31:28 2000//
+/Isdn/1.1/Mon Mar  3 04:37:32 1997//
+/NEWS/1.8/Tue Mar 13 14:39:30 2001//
+/README/1.101/Sun Jan 15 15:10:26 2006//
+/README.Distributor/1.1/Tue Oct 26 18:17:11 1999//
+/README.History/1.1/Fri Jul 21 18:46:24 2000//
+/README.Internationalization/1.2/Fri Sep  1 12:35:43 2000//
+/TODO/1.10/Fri Jun 11 15:48:11 1999//
+/aclocal.m4/1.10/Fri Jul 19 19:03:55 2002//
+/configure/1.31/Wed Feb 23 14:33:38 2005//
+/configure.in/1.32/Wed Feb 23 14:33:38 2005//
+/holiday-at.dat/1.7/Mon Jan 23 17:07:09 2006//
+/holiday-ch.dat/1.6/Mon Jan 23 17:07:09 2006//
+/holiday-de.dat/1.7/Mon Jan 23 17:07:09 2006//
+/holiday-lu.dat/1.1/Sun Jan 23 22:31:13 2000//
+/holiday-nl.dat/1.7/Mon Sep 20 18:42:29 1999//
+/holiday-no.dat/1.2/Mon Jan 23 17:07:09 2006//
+/holiday-sk.dat/1.2/Mon Jan 23 17:07:09 2006//
+/install-sh/1.1/Sun Mar 23 19:22:36 1997//
+/policy.h.in/1.6/Tue Aug  1 20:31:29 2000//
+/rate-at.dat/1.39/Mon Jan 23 17:07:09 2006//
+/rate-ch.dat/1.2/Mon Jan 23 17:07:09 2006//
+/rate-de.dat/1.131/Mon Jan 23 17:07:09 2006//
+/rate-lu.dat/1.1/Sun Jan 23 22:31:13 2000//
+/rate-nl.dat/1.14/Thu Jul  4 10:40:18 2002//
+/rate-no.dat/1.2/Mon Jan 23 17:07:09 2006//
+/rate-pl.dat/1.6/Sat Nov 17 12:00:23 2001//
+/rate-sk.dat/1.1/Mon May 14 14:16:23 2001//
+D/bin////
+D/client////
+D/connect////
+D/contrib////
+D/install////
+D/isdnconf////
+D/isdnlog////
+D/isdnrep////
+D/samples////
+D/tools////
+/.country-alias/1.14/Tue Oct 20 09:07:26 2009//
+/ChangeLog/1.8/Tue Oct 20 09:07:27 2009//
+/Makefile.in/1.225/Tue Oct 20 09:07:27 2009//
+/country-de.dat/1.51/Tue Oct 20 09:07:27 2009//

@@ -1,0 +1,31 @@
+/.cvsignore/1.2/Wed Feb 23 14:33:40 2005//
+/Makefile/1.10/Tue Aug  1 20:31:31 2000//
+/NEWS/1.16/Wed Sep 11 09:07:09 2002//
+/country.c/1.8/Tue Feb 22 20:04:11 2000//
+/country.h/1.3/Tue Jun 15 20:05:02 1999//
+/dest.c/1.11/Wed Jan 12 16:28:05 2005//
+/dest.h/1.1/Mon Oct 25 18:33:17 1999//
+/holiday.c/1.19/Mon Oct  4 14:50:41 2004//
+/holiday.h/1.6/Tue Jun 15 20:05:05 1999//
+/isdnconf.c/1.36/Sat Jul 24 16:16:56 2004//
+/isdnrate.c/1.45/Mon Aug  1 12:15:15 2005//
+/isdnrate.man/1.8/Tue Jul 13 21:44:20 2004//
+/mkcountries.c/1.1/Sat Apr 10 16:50:29 1999//
+/rate-at.c/1.41/Mon Jun 24 15:47:25 2002//
+/rate-files.man/1.11/Wed Feb 23 14:33:40 2005//
+/rate.c/1.91/Sun Feb  5 02:44:04 2006//
+/rate.h/1.22/Sun Jan  2 16:37:21 2005//
+/rate_skip.c/1.1/Wed Feb 23 14:33:40 2005//
+/rate_skip.h/1.1/Wed Feb 23 14:33:40 2005//
+/telnum.h/1.10/Tue Nov  9 22:22:54 2004//
+/zone.c/1.23/Thu Sep 11 10:58:56 2003//
+/zone.h/1.3/Sun Nov  7 13:29:29 1999//
+D/cdb////
+D/dest////
+D/telrate////
+D/zone////
+/ChangeLog/1.14/Tue Oct 20 09:07:28 2009//
+/rate.conf.5.in/1.2/Tue Oct 20 09:07:28 2009//
+/telnum.c/1.17/Tue Oct 20 09:07:28 2009//
+/tools.c/1.55/Tue Oct 20 09:07:28 2009//
+/tools.h/1.65/Tue Oct 20 09:07:28 2009//

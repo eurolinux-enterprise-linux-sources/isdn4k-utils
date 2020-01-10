@@ -1,0 +1,31 @@
+/AUTHORS/1.2/Mon Jul  6 09:05:16 1998//
+/COPYING/1.1/Wed Jun 17 19:20:59 1998//
+/Makefile.am/1.7/Tue Nov 10 18:36:25 1998//
+/audio.c/1.5/Tue Nov 10 18:36:25 1998//
+/audio.h/1.3/Mon Aug 31 15:30:39 1998//
+/breaklist.c/1.2/Fri Sep 18 15:08:56 1998//
+/breaklist.h/1.1/Mon Aug 31 15:33:36 1998//
+/control.c/1.4/Fri Sep 18 15:08:57 1998//
+/control.h/1.3/Mon Aug 31 10:43:02 1998//
+/libvboxmodem.c/1.5/Fri Sep 18 15:08:58 1998//
+/libvboxmodem.h/1.3/Mon Aug 31 10:43:04 1998//
+/lock.c/1.4/Tue Nov 10 18:36:27 1998//
+/lock.h/1.2/Mon Aug 31 10:43:05 1998//
+/log.c/1.7/Fri Sep 18 15:09:00 1998//
+/log.h/1.4/Mon Aug 31 10:43:06 1998//
+/modem.c/1.7/Tue Nov 10 18:36:28 1998//
+/modem.h/1.3/Mon Aug 31 10:43:09 1998//
+/rc.c/1.5/Fri Sep 18 15:09:02 1998//
+/rc.h/1.3/Mon Aug 31 10:43:10 1998//
+/stringutils.c/1.6/Tue Nov 10 18:36:32 1998//
+/stringutils.h/1.5/Tue Nov 10 18:36:33 1998//
+/tclscript.c/1.11/Tue Nov 10 18:36:33 1998//
+/tclscript.h/1.6/Fri Sep 18 15:09:05 1998//
+/vboxgetty.c/1.10/Tue Nov 10 18:36:35 1998//
+/vboxgetty.h/1.5/Fri Sep 18 15:09:08 1998//
+/vboxrc.c/1.4/Tue Nov 10 18:36:36 1998//
+/vboxrc.h/1.2/Mon Aug 31 10:43:20 1998//
+/voice.c/1.12/Mon Aug 30 14:59:25 2004//
+/voice.h/1.9/Tue Nov 10 18:36:40 1998//
+D/docs////
+D/examples////

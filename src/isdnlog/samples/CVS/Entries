@@ -1,0 +1,24 @@
+/.cvsignore/1.2/Sun Feb 12 16:16:36 2006//
+/callerid.conf/1.2/Fri Sep  8 08:55:51 2000//
+/isdn.conf.at.in/1.1/Thu Oct 28 01:53:30 2004//
+/isdn.conf.de.in/1.2/Mon Jan 23 17:07:09 2006//
+/isdn.conf.in/1.1/Thu Oct 28 01:53:30 2004//
+/isdn.conf.lu.in/1.1/Thu Oct 28 01:53:30 2004//
+/isdn.conf.nl.in/1.1/Thu Oct 28 01:53:30 2004//
+/isdn.conf.no.in/1.1/Thu Oct 28 01:53:30 2004//
+/isdn.conf.pl.in/1.1/Thu Oct 28 01:53:30 2004//
+/isdnlog.isdnctrl0.options/1.2/Wed Dec  6 16:10:17 2000//
+/isdnlog.users/1.1/Sat Feb 12 16:40:23 2000//
+/isdnlog.users.sample.1/1.1/Sun Mar 16 20:59:12 1997//
+/isdnlog.users.sample.2/1.1/Sun Mar 16 20:59:13 1997//
+/provider/1.1/Thu Mar  9 18:50:02 2000//
+/rate.conf.at/1.6/Mon Jan 23 17:07:09 2006//
+/rate.conf.de/1.41/Mon Jan 23 17:07:09 2006//
+/rate.conf.lu/1.1/Sat Feb 12 16:40:23 2000//
+/rate.conf.nl/1.4/Tue Nov  7 14:25:34 2000//
+/rate.conf.no/1.2/Mon Jan 23 17:07:09 2006//
+/rate.conf.pl/1.1/Mon Feb 28 19:53:56 2000//
+/reload/1.1/Sun Mar 16 20:59:14 1997//
+/rtest.dat/1.2/Mon Jan 23 17:07:09 2006//
+/stop/1.2/Sat Feb 12 16:40:23 2000//
+D
